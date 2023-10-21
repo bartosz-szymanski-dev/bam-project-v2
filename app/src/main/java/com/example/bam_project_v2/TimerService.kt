@@ -31,10 +31,9 @@ class TimerService : Service() {
         }
         jobs.add(job)
 
-        // Send a broadcast with the username when the service is started
         val broadcastIntent = Intent("com.example.bam_project_v2.ACTION_SEND").apply {
             putExtra("username", userName)
-            putExtra("number", counter.get())  // Send the initial counter value
+            putExtra("number", counter.get())
         }
         sendBroadcast(broadcastIntent)
 

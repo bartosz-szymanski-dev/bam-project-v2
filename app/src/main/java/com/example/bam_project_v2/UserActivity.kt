@@ -40,7 +40,7 @@ class UserActivity : AppCompatActivity() {
         startService(serviceIntent)
     }
 
-    fun stopService(view: View) {  // added the View parameter here
+    fun stopService(view: View) {
         val serviceIntent = Intent(this, TimerService::class.java)
         stopService(serviceIntent)
     }
@@ -48,7 +48,6 @@ class UserActivity : AppCompatActivity() {
     fun fetchData(view: View) {
         val db = AppDatabase.getDatabase(this)
 
-        // Launch a coroutine to fetch data
         CoroutineScope(Dispatchers.IO).launch {
             val data = db.userNumberDao().getAll()
             data.forEach {

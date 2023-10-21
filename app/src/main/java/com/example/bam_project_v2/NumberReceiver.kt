@@ -17,7 +17,6 @@ class NumberReceiver : BroadcastReceiver() {
         val userNumber = UserNumber(username = userName ?: "Unknown", number = number ?: -1)
         val db = AppDatabase.getDatabase(context!!)
 
-        // Launch a coroutine to insert data
         CoroutineScope(Dispatchers.IO).launch {
             db.userNumberDao().insert(userNumber)
         }
